@@ -30,18 +30,18 @@
    </div>
 
    <!-- Map Modal -->
-   <div id="map-modal" class="modal" style="display: none;">
+   <div id="map-modal" class="modal">
        <div class="modal-content">
            <span class="close" onclick="closeModal('map-modal')">&times;</span>
            <h3>Select Delivery Location</h3>
-           <div id="map" style="height: 400px; width: 100%;"></div>
+           <div id="map" class="map-container"></div>
            <input type="text" id="delivery-location-input" placeholder="Enter delivery location (e.g., Nairobi)">
            <button id="confirm-delivery-btn">Confirm Location</button> <!-- ✅ Fixed button ID -->
        </div>
    </div>
 
    <!-- Payment Modal -->
-   <div id="payment-modal" class="modal" style="display: none;">
+   <div id="payment-modal" class="modal">
        <div class="modal-content">
            <span class="close" onclick="closeModal('payment-modal')">&times;</span>
            <h3>Choose Payment Method</h3>

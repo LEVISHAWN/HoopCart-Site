@@ -218,8 +218,10 @@ function processCashOnDelivery() {
     }
 
     setTimeout(() => {
-        alert(`Order placed successfully! Your items will be delivered to:\n${deliveryLocation}\nPayment will be collected upon delivery.`);
-        completeCheckout(deliveryLocation, "Cash on Delivery");
+        if (confirm(`Order placed successfully! Your items will be delivered to:\n${deliveryLocation}\nPayment will be collected upon delivery.`)) {
+            completeCheckout(deliveryLocation, "Cash on Delivery");
+            clearCart();
+        }
     }, 1000);
 }
 
@@ -245,8 +247,10 @@ function handlePayment(paymentMethod) {
     }
 
     setTimeout(() => {
-        alert(`Payment done to HoopCart using ${paymentMethod}`);
-        completeCheckout(deliveryLocation, paymentMethod);
+        if (confirm(`Payment done to HoopCart using ${paymentMethod}. Do you want to proceed?`)) {
+            completeCheckout(deliveryLocation, paymentMethod);
+            clearCart();
+        }
     }, 1000);
 }
 
