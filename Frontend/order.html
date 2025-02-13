@@ -23,5 +23,31 @@
 
     <!-- Link to JavaScript -->
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/Backend/data/products.json')
+                .then(response => response.json())
+                .then(products => {
+                    const productList = document.getElementById('product-list');
+                    products.forEach(product => {
+                        const productItem = document.createElement('div');
+                        productItem.className = 'product-item';
+                        productItem.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <p>Price: Ksh ${product.price}</p>
+                            <button onclick="addToCart(${product.id})">Add to Cart</button>
+                        `;
+                        productList.appendChild(productItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching products:', error));
+        });
+
+        function addToCart(productId) {
+            // Implement add to cart functionality
+        }
+    </script>
 </body>
 </html>
