@@ -1,0 +1,285 @@
+[
+  {
+    "id": 1,
+    "name": "Portable Basketball Hoop",
+    "description": "High-quality portable basketball hoop for outdoor use.",
+    "price": 199.99,
+    "stock": 50,
+    "image": "images/hoop.jpg",
+    "coupon": "HOOP10"
+  },
+  {
+    "id": 2,
+    "name": "Official Size Basketball",
+    "description": "Regulation size basketball for professional play.",
+    "price": 29.99,
+    "stock": 98,
+    "image": "images/basketball.jpg",
+    "coupon": "BALL20"
+  },
+  {
+    "id": 3,
+    "name": "Basketball Sneakers",
+    "description": "Comfortable sneakers designed for basketball players.",
+    "price": 79.99,
+    "stock": 80,
+    "image": "images/socks.jpg",
+    "coupon": "SHOES30"
+  },
+  {
+    "id": 4,
+    "name": "Basketball Training Ball",
+    "description": "Lightweight training ball for beginners and kids.",
+    "price": 19.99,
+    "stock": 150,
+    "image": "images/training-ball.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Basketball Jersey Set",
+    "description": "Full set of jerseys for a basketball team.",
+    "price": 49.99,
+    "stock": 30,
+    "image": "images/jersey.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Headband",
+    "description": "Sweat-absorbing headband for basketball players.",
+    "price": 9.99,
+    "stock": 200,
+    "image": "images/headband.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Leggings",
+    "description": "Compression leggings for improved performance.",
+    "price": 39.99,
+    "stock": 120,
+    "image": "images/legging.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Mouthguard",
+    "description": "Protective mouthguard for basketball players.",
+    "price": 14.99,
+    "stock": 150,
+    "image": "images/mouthguard.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Basketball Net",
+    "description": "Durable net for basketball hoops.",
+    "price": 24.99,
+    "stock": 80,
+    "image": "images/net.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Shorts",
+    "description": "Breathable and comfortable basketball shorts.",
+    "price": 29.99,
+    "stock": 100,
+    "image": "images/shorts.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Vest",
+    "description": "Team vests for basketball games.",
+    "price": 19.99,
+    "stock": 60,
+    "image": "images/vest.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Water Bottle",
+    "description": "Insulated water bottle for hydration during games.",
+    "price": 14.99,
+    "stock": 200,
+    "image": "images/water-bottle.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Ankle Braces",
+    "description": "Supportive ankle braces to prevent injuries.",
+    "price": 24.99,
+    "stock": 100,
+    "image": "images/ankle-braces.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Knee Pads",
+    "description": "Protective knee pads for intense play.",
+    "price": 34.99,
+    "stock": 80,
+    "image": "images/knee-pads.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Jump Rope",
+    "description": "Speed jump rope for agility training.",
+    "price": 19.99,
+    "stock": 150,
+    "image": "images/jump-rope.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Dunk Ball",
+    "description": "Weighted ball for practicing dunks.",
+    "price": 39.99,
+    "stock": 50,
+    "image": "images/dunk-ball.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Practice Backboard",
+    "description": "Portable backboard for shooting practice.",
+    "price": 89.99,
+    "stock": 40,
+    "image": "images/practice-backboard.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Team Warm-Up Jacket",
+    "description": "Official warm-up jacket for basketball teams.",
+    "price": 59.99,
+    "stock": 70,
+    "image": "images/warm-up-jacket.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Basketball Gloves",
+    "description": "Grip-enhancing gloves for better ball control.",
+    "price": 29.99,
+    "stock": 90,
+    "image": "images/gloves.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Player Bench",
+    "description": "Portable bench for team substitutions.",
+    "price": 79.99,
+    "stock": 20,
+    "image": "images/player-bench.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Scoreboard Timer",
+    "description": "Digital scoreboard with timer for games.",
+    "price": 129.99,
+    "stock": 30,
+    "image": "images/scoreboard.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Rebounder Board",
+    "description": "Rebounder board for solo practice.",
+    "price": 69.99,
+    "stock": 50,
+    "image": "images/rebounder-board.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Ball Pump",
+    "description": "High-quality pump for inflating basketballs.",
+    "price": 12.99,
+    "stock": 200,
+    "image": "images/ball-pump.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Wristbands",
+    "description": "Moisture-wicking wristbands for sweat control.",
+    "price": 7.99,
+    "stock": 300,
+    "image": "images/wristbands.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Training Cone Set",
+    "description": "Set of cones for agility drills.",
+    "price": 19.99,
+    "stock": 100,
+    "image": "images/cone-set.jpg"
+  },
+  {
+    "id": 26,
+    "name": "Basketball Duffle Bag",
+    "description": "Durable duffle bag for carrying gear.",
+    "price": 39.99,
+    "stock": 80,
+    "image": "images/duffle-bag.jpg"
+  },
+  {
+    "id": 27,
+    "name": "Shooting Machine",
+    "description": "Automated shooting machine for practice.",
+    "price": 499.99,
+    "stock": 10,
+    "image": "images/shooting-machine.jpg"
+  },
+  {
+    "id": 28,
+    "name": "Player ID Cards",
+    "description": "Customizable ID cards for team members.",
+    "price": 4.99,
+    "stock": 500,
+    "image": "images/id-cards.jpg"
+  },
+  {
+    "id": 29,
+    "name": "Court Marker Chalk",
+    "description": "Chalk for marking basketball courts.",
+    "price": 5.99,
+    "stock": 200,
+    "image": "images/chalk.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Basketball Whistle",
+    "description": "Referee whistle for games and practices.",
+    "price": 8.99,
+    "stock": 150,
+    "image": "images/whistle.jpg"
+  },
+  {
+    "id": 31,
+    "name": "Team Banner",
+    "description": "Customizable banner for team pride.",
+    "price": 29.99,
+    "stock": 60,
+    "image": "images/banner.jpg"
+  },
+  {
+    "id": 32,
+    "name": "Sports Tape",
+    "description": "Adhesive tape for wrapping ankles and wrists.",
+    "price": 6.99,
+    "stock": 250,
+    "image": "images/sports-tape.jpg"
+  },
+  {
+    "id": 33,
+    "name": "Basketball Poster Set",
+    "description": "Set of motivational basketball posters.",
+    "price": 19.99,
+    "stock": 100,
+    "image": "images/poster-set.jpg"
+  },
+  {
+    "id": 34,
+    "name": "Practice Vest Set",
+    "description": "Set of reversible practice vests.",
+    "price": 49.99,
+    "stock": 40,
+    "image": "images/practice-vests.jpg"
+  },
+  {
+    "id": 35,
+    "name": "Team Hat",
+    "description": "Official hat for basketball teams.",
+    "price": 14.99,
+    "stock": 120,
+    "image": "images/team-hat.jpg"
+  }
+]

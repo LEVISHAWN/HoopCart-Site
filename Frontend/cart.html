@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoopCart - Cart</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">HoopCart</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+   <!-- Cart Content -->
+   <div class="cart-content" id="cart-content">
+       <h2>Shopping Cart</h2>
+       <ul id="cart-items"></ul>
+       <p id="cart-total">Total: $0.00</p>
+       <button id="checkout-btn">Checkout</button>  <!-- ✅ Added ID for JavaScript -->
+   </div>
+
+   <!-- Map Modal -->
+   <div id="map-modal" class="modal" style="display: none;">
+       <div class="modal-content">
+           <span class="close" onclick="closeModal('map-modal')">&times;</span>
+           <h3>Select Delivery Location</h3>
+           <div id="map" style="height: 400px; width: 100%;"></div>
+           <input type="text" id="delivery-location-input" placeholder="Enter delivery location (e.g., Nairobi)">
+           <button id="confirm-delivery-btn">Confirm Location</button> <!-- ✅ Fixed button ID -->
+       </div>
+   </div>
+
+   <!-- Payment Modal -->
+   <div id="payment-modal" class="modal" style="display: none;">
+       <div class="modal-content">
+           <span class="close" onclick="closeModal('payment-modal')">&times;</span>
+           <h3>Choose Payment Method</h3>
+           <button onclick="payWithMpesa()">Pay with M-Pesa</button>
+           <button onclick="payWithPayPal()">Pay with PayPal</button>
+       </div>
+   </div>
+
+   <!-- Load Leaflet & Esri Libraries -->
+   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+   <script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
+   <script src="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js"></script>
+
+   <!-- Link to JavaScript -->
+   <script src="script.js"></script>
+
+   <script>
+       document.addEventListener("DOMContentLoaded", function () {
+           // Ensure confirm button is properly attached
+           const confirmButton = document.getElementById("confirm-delivery-btn");
+           if (confirmButton) {
+               confirmButton.addEventListener("click", confirmDelivery);
+           }
+
+           // Ensure checkout button opens the map modal
+           const checkoutButton = document.getElementById("checkout-btn");
+           if (checkoutButton) {
+               checkoutButton.addEventListener("click", function () {
+                   document.getElementById("map-modal").style.display = "block";
+                   initializeMap();
+               });
+           }
+       });
+
+       let map; // Global map variable
+
+       function initializeMap() {
+           if (!map) {
+               map = L.map("map").setView([1.3733, 36.89], 7);
+               L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                   maxZoom: 19,
+                   attribution: "© OpenStreetMap contributors"
+               }).addTo(map);
+           }
+       }
+   </script>
+</body>
+</html>

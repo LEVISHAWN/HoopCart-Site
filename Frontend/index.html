@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoopCart</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black; /* Changed to Black */
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            background: #7D0000; /* Dark Red */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .left-section, .right-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Left Section */
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-section h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+            color: white; /* Changed to White */
+        }
+
+        .left-section img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            border: 3px solid white; /* White Border for Contrast */
+        }
+
+        /* Right Section */
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .right-section h2 {
+            color: white; /* Changed to White */
+        }
+
+        .right-section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white; /* Changed to White */
+        }
+
+        /* Buttons */
+        .button-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .button {
+            background-color: black; /* Changed to Black */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            border: 2px solid white; /* White Border for Visibility */
+        }
+
+        .button:hover {
+            background-color: #444;
+            border-color: #ccc;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 90%;
+                padding: 20px;
+            }
+
+            .left-section h1 {
+                font-size: 40px;
+            }
+
+            .right-section p {
+                font-size: 16px;
+            }
+
+            .button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left-section h1 {
+                font-size: 30px;
+            }
+
+            .right-section p {
+                font-size: 14px;
+            }
+
+            .button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container" >
+        <!-- Left Section -->
+        <div class="left-section">
+            <h1>HoopCart</h1>
+            <img src="images/basketball.jpg" alt="Basketball Gear">
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <h2>Gear Up. Game On 🏀🔥</h2>
+            <p>Welcome to HoopCart, your one-stop shop for premium basketball gear and accessories. Elevate your game with our high-quality products designed for champions.</p>
+
+            <div class="button-container">
+                <a href="order.html" class="button">Shop Now</a>
+                <a href="cart.html" class="button">View Cart</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
