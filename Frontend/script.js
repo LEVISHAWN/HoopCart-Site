@@ -41,10 +41,10 @@ function addToCart(productId) {
         return;
     }
 
-    const quantity = parseInt(prompt(`How many ${product.name}s do you want to buy? (Max: ${product.stock})`));
-    if (isNaN(quantity) || quantity <= 0 || quantity > product.stock) {
+    let quantity = parseInt(prompt(`How many ${product.name}s do you want to buy? (Max: ${product.stock})`));
+    while (isNaN(quantity) || quantity <= 0 || quantity > product.stock) {
         alert('Invalid quantity or not enough stock.');
-        return;
+        quantity = parseInt(prompt(`How many ${product.name}s do you want to buy? (Max: ${product.stock})`));
     }
 
     product.stock -= quantity;

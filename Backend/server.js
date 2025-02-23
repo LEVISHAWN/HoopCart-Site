@@ -108,7 +108,7 @@ app.post('/api/cart', (req, res) => {
     if (existingItem) {
         existingItem.quantity += quantity;
     } else {
-        cart.push({ ...product, quantity });
+        cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, quantity });
     }
 
     res.json({ message: 'Added to cart', cart });

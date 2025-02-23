@@ -46,7 +46,31 @@
         });
 
         function addToCart(productId) {
-            // Implement add to cart functionality
+            const product = products.find(p => p.id === productId);
+            if (!product || product.stock <= 0) {
+                alert('Product is out of stock!');
+                return;
+            }
+
+            let quantity = parseInt(prompt(`How many ${product.name}s do you want to buy? (Max: ${product.stock})`));
+            while (isNaN(quantity) || quantity <= 0 || quantity > product.stock) {
+                alert('Invalid quantity or not enough stock.');
+                quantity = parseInt(prompt(`How many ${product.name}s do you want to buy? (Max: ${product.stock})`));
+            }
+
+            product.stock -= quantity;
+            updateProductStock(product);
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+
+            saveCart();
+            alert(`${quantity} ${product.name}(s) added to cart!`);
+            renderProducts();
         }
     </script>
 </body>

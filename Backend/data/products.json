@@ -21,9 +21,9 @@
     "id": 3,
     "name": "Basketball Sneakers",
     "description": "Comfortable sneakers designed for basketball players.",
-    "price": 79.99,
-    "stock": 80,
-    "image": "images/socks.jpg",
+    "price": 200.99,
+    "stock": 75,
+    "image": "images/Kobe's 1.jpg",
     "coupon": "SHOES30"
   },
   {
