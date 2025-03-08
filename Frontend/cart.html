@@ -68,6 +68,8 @@
 
    <script>
        document.addEventListener("DOMContentLoaded", function () {
+           loadCart();
+
            // Ensure confirm button is properly attached
            const confirmButton = document.getElementById("confirm-delivery-btn");
            if (confirmButton) {
@@ -94,6 +96,85 @@
                    attribution: "© OpenStreetMap contributors"
                }).addTo(map);
            }
+       }
+
+       function addToCart(productId) {
+           const product = products.find(p => p.id === productId);
+           if (!product || product.stock <= 0) {
+               alert('Product is out of stock!');
+               return;
+           }
+
+           let quantity = parseInt(prompt(`How many ${product.name}s do you want to buy? (Max: ${product.stock})`));
+           while (isNaN(quantity) || quantity <= 0 || quantity > product.stock) {
+               alert('Invalid quantity or not enough stock.');
+               quantity = parseInt(prompt(`How many ${product.name}s do you want to buy? (Max: ${product.stock})`));
+           }
+
+           product.stock -= quantity;
+           updateProductStock(product);
+
+           const existingItem = cart.find(item => item.id === productId);
+           if (existingItem) {
+               existingItem.quantity += quantity;
+           } else {
+               cart.push({ ...product, quantity });
+           }
+
+           saveCart();
+           alert(`${quantity} ${product.name}(s) added to cart!`);
+           renderCart();
+       }
+
+       function removeFromCart(index) {
+           const item = cart[index];
+           if (!item) return;
+
+           const product = products.find(p => p.id === item.id);
+           if (product) {
+               product.stock += item.quantity;
+               updateProductStock(product);
+           }
+
+           cart.splice(index, 1);
+           saveCart();
+           renderCart();
+       }
+
+       function renderCart() {
+           const cartItemsList = document.getElementById('cart-items');
+           if (!cartItemsList) return;
+
+           cartItemsList.innerHTML = '';
+           let total = 0;
+
+           cart.forEach((item, index) => {
+               const li = document.createElement('li');
+               li.innerHTML = `
+                   <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto;">
+                   <span>${item.name} x ${item.quantity} = $${(item.price * item.quantity).toFixed(2)}</span>
+                   <button onclick="removeFromCart(${index})">Remove</button>
+               `;
+               cartItemsList.appendChild(li);
+               total += item.price * item.quantity;
+           });
+
+           const cartTotalElement = document.getElementById('cart-total');
+           if (cartTotalElement) {
+               cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
+           }
+       }
+
+       function loadCart() {
+           const savedCart = localStorage.getItem('cart');
+           if (savedCart) {
+               cart = JSON.parse(savedCart);
+           }
+           renderCart();
+       }
+
+       function saveCart() {
+           localStorage.setItem('cart', JSON.stringify(cart));
        }
    </script>
 

@@ -28,9 +28,62 @@
 
     <!-- Link to JavaScript -->
     <script src="script.js"></script>
+<<<<<<< HEAD
 
     <!-- Add this before the closing body tag -->
     <script src="js/avatar.js"></script>
     <script src="js/background.js"></script>
+=======
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/Backend/data/products.json')
+                .then(response => response.json())
+                .then(products => {
+                    const productList = document.getElementById('product-list');
+                    products.forEach(product => {
+                        const productItem = document.createElement('div');
+                        productItem.className = 'product-item';
+                        productItem.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <p>Price: Ksh ${product.price}</p>
+                            <button onclick="addToCart(${product.id})">Add to Cart</button>
+                        `;
+                        productList.appendChild(productItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching products:', error));
+        });
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || product.stock <= 0) {
+                alert('Product is out of stock!');
+                return;
+            }
+
+            let quantity = parseInt(prompt(`How many ${product.name}s do you want to buy? (Max: ${product.stock})`));
+            while (isNaN(quantity) || quantity <= 0 || quantity > product.stock) {
+                alert('Invalid quantity or not enough stock.');
+                quantity = parseInt(prompt(`How many ${product.name}s do you want to buy? (Max: ${product.stock})`));
+            }
+
+            product.stock -= quantity;
+            updateProductStock(product);
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+
+            saveCart();
+            alert(`${quantity} ${product.name}(s) added to cart!`);
+            renderProducts();
+        }
+    </script>
+>>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
 </body>
 </html>

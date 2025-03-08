@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - HoopCart</title>
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -54,11 +55,82 @@
             background-color: rgba(220, 53, 69, 0.2);
             border-color: rgba(220, 53, 69, 0.3);
             color: #fff;
+=======
+    <style>
+        body {
+            background-color: #000000; /* Black background */
+            color: white; /* White text */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #8B0000; /* Dark red background */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5); /* Slight red glow */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #222; /* Darker shade for inputs */
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        a {
+            color: #ff6666; /* Light red link */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: white;
+            background-color: rgba(255, 0, 0, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+>>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
         }
     </style>
 </head>
 <body>
     <div class="container">
+<<<<<<< HEAD
         <div class="login-container">
             <h2 class="text-center mb-4">Login to HoopCart</h2>
             <% if (message) { %>
@@ -81,5 +153,50 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+=======
+        <h2>Login to HoopCart</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button type="submit">Log In</button>
+        </form>
+        <p>Don't have an account? <a href="/auth/signup" class="button">Sign Up</a></p>
+        <p id="error-message" class="error-message" style="display: none;"></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent form submission reload
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const userData = { email, password };
+
+            try {
+                const response = await fetch("http://localhost:4000/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(userData),
+                    credentials: "include" // Required for session storage
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert("✅ Login successful! Redirecting...");
+                    window.location.href = "/account"; // Redirect to account page
+                } else {
+                    document.getElementById("error-message").textContent = "❌ " + data.error;
+                    document.getElementById("error-message").style.display = "block";
+                }
+            } catch (error) {
+                console.error("❌ Error logging in:", error);
+                document.getElementById("error-message").textContent = "❌ Login request failed.";
+                document.getElementById("error-message").style.display = "block";
+            }
+        });
+    </script>
+>>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
 </body>
 </html>
