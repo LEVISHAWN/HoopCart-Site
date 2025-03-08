@@ -6,20 +6,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs");
 const authRoutes = require("./routes/authRoutes");
-<<<<<<< HEAD
 const checkAuth = require("./middleware/auth");
-//const paymentRoutes = require("./routes/paymentRoutes");
-require("dotenv").config();
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-=======
 const paymentRoutes = require("./routes/paymentRoutes");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 4000;
->>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
+const PORT = process.env.PORT || 3000;
 
 // ✅ Enable CORS for frontend communication
 app.use(
@@ -30,17 +22,6 @@ app.use(
 );
 
 // ✅ Middleware for JSON and Sessions
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(session({
-    secret: process.env.SESSION_SECRET || "fallback_secret_key",
-    resave: false,
-    saveUninitialized: true
-}));
-
-<<<<<<< HEAD
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -79,11 +60,6 @@ app.get("/api/auth/status", (req, res) => {
         user: req.session.user || null
     });
 });
-=======
-// ✅ Set EJS as the view engine
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
->>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
 
 // ✅ Use authentication and payment routes
 app.use("/auth", authRoutes);
@@ -160,8 +136,6 @@ app.get("/api/products", (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
-
-
 
 app.put("/api/products", (req, res) => {
     const updatedProduct = req.body;
@@ -240,47 +214,10 @@ app.get("/api/user", (req, res) => {
         res.status(401).json({ loggedIn: false, message: "User not logged in." });
     }
 });
-<<<<<<< HEAD
-
-// ✅ Logout Route
-app.get("/auth/logout", (req, res) => {
-    req.session.destroy(err => {
-        if (err) return res.status(500).json({ message: "Logout failed" });
-        res.redirect("/auth/login");
-    });
-});
-
-// ✅ Fetch Users (for Admin or Debugging)
-app.get("/users", (req, res) => {
-    db.query("SELECT * FROM users", (err, results) => {
-        if (err) return res.status(500).send("Database error");
-        res.json(results);
-    });
-});
-app.get("/api/user", (req, res) => {
-    if (req.session.user) {
-        res.json({ loggedIn: true, user: req.session.user });
-    } else {
-        res.status(401).json({ loggedIn: false, message: "User not logged in." });
-    }
-});
-
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-=======
-app.get("/account", (req, res) => {
-    if (!req.session.user) {
-        return res.redirect("/auth/login");
-    }
-    res.render("account", { user: req.session.user });
-});
-
 
 // ✅ Start Server
 const server = app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`)).on("error", (err) => {
     if (err.code === "EADDRINUSE") {
         const newServer = app.listen(0, () => console.log(`🚀 Server running on http://localhost:${newServer.address().port}`));
     } else console.error("❌ Server failed to start:", err);
->>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
 });

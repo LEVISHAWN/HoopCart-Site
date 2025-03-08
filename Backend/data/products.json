@@ -12,13 +12,8 @@
     "id": 2,
     "name": "Official Size Basketball",
     "description": "Regulation size basketball for professional play.",
-<<<<<<< HEAD
-    "price": 29.99,
-    "stock": 90,
-=======
     "price": 4799,
     "stock": 98,
->>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
     "image": "images/basketball.jpg",
     "coupon": "BALL20"
   },
@@ -26,15 +21,9 @@
     "id": 3,
     "name": "Basketball Sneakers",
     "description": "Comfortable sneakers designed for basketball players.",
-<<<<<<< HEAD
-    "price": 79.99,
-    "stock": 78,
-    "image": "images/socks.jpg",
-=======
     "price": 32159,
     "stock": 75,
     "image": "images/Kobe's 1.jpg",
->>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
     "coupon": "SHOES30"
   },
   {
@@ -57,26 +46,16 @@
     "id": 6,
     "name": "Headband",
     "description": "Sweat-absorbing headband for basketball players.",
-<<<<<<< HEAD
-    "price": 9.99,
-    "stock": 198,
-=======
     "price": 1599,
     "stock": 190,
->>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
     "image": "images/headband.jpg"
   },
   {
     "id": 7,
     "name": "Leggings",
     "description": "Compression leggings for improved performance.",
-<<<<<<< HEAD
-    "price": 39.99,
-    "stock": 116,
-=======
     "price": 6399,
-    "stock": 120,
->>>>>>> 6325880f9ecfdfdda2b08c688fecae17ba045282
+    "stock": 122,
     "image": "images/legging.jpg"
   },
   {
@@ -188,7 +167,7 @@
     "name": "Scoreboard Timer",
     "description": "Digital scoreboard with timer for games.",
     "price": 20799,
-    "stock": 30,
+    "stock": 26,
     "image": "images/scoreboard.jpg"
   },
   {
