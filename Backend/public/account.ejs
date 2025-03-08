@@ -1,0 +1,88 @@
+<!-- views/account.ejs - Account Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/api/user")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loggedIn) {
+                        document.getElementById("account-info").innerHTML = `
+                            <h2>Welcome, ${data.user.fullName}</h2>
+                            <p>Email: ${data.user.email}</p>
+                            <p>Phone: ${data.user.phone}</p>
+                        `;
+
+                        let navAvatar = document.getElementById("nav-avatar");
+                        if (navAvatar) {
+                            navAvatar.innerHTML = `
+                                <div class="avatar">${data.user.fullName.charAt(0).toUpperCase()}</div>
+                            `;
+                        }
+                    } else {
+                        document.getElementById("account-info").innerHTML = "<p>You are not logged in.</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error("❌ Error loading account details:", error);
+                    document.getElementById("account-info").innerHTML = "<p>Error loading account details.</p>";
+                });
+                
+        });
+    </script>
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 10px 20px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #7D0000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div><a href="/">🏠 Home</a></div>
+        <div id="nav-avatar">
+            <% if (user) { %>
+                <div class="avatar"><%= user.fullName.charAt(0).toUpperCase() %></div>
+            <% } %>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Account Page</h1>
+        <div id="account-info">
+            <% if (user) { %>
+                <h2>Welcome, <%= user.fullName %></h2>
+                <p>Email: <%= user.email %></p>
+                <p>Phone: <%= user.phone %></p>
+            <% } else { %>
+                <p>You are not logged in.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

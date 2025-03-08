@@ -1,11 +1,17 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const fs = require('fs');
-const path = require('path');
+const express = require("express");
+const db = require("./db"); // Import database connection
+const path = require("path");
+const session = require("express-session");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const fs = require("fs");
+const authRoutes = require("./routes/authRoutes");
+const checkAuth = require("./middleware/auth");
+//const paymentRoutes = require("./routes/paymentRoutes");
+require("dotenv").config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Enable CORS (for frontend communication)
 app.use(cors({
@@ -14,7 +20,44 @@ app.use(cors({
 }));
 
 // Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(session({
+    secret: process.env.SESSION_SECRET || "fallback_secret_key",
+    resave: false,
+    saveUninitialized: true
+}));
+
+// Add auth middleware
+app.use(checkAuth);
+
+// ✅ Set EJS as the view engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// ✅ Serve Static Frontend Files
+app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname, "public"))); // Ensure this is serving account.html
+
+// ✅ Use auth routes
+app.use("/auth", authRoutes);
+
+// ✅ Serve the account page
+app.get("/account", (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/auth/login");
+    }
+    res.render("account", { user: req.session.user });
+});
+
+// API endpoint to check login status
+app.get("/api/auth/status", (req, res) => {
+    res.json({
+        isLoggedIn: req.session.user?.isLoggedIn || false,
+        user: req.session.user || null
+    });
+});
 
 // Define product data file path
 const productsFilePath = path.join(__dirname, 'data', 'products.json');
@@ -165,6 +208,29 @@ app.post('/api/apply-coupon', (req, res) => {
         res.json({ success: true, message: 'Coupon applied successfully!' });
     } else {
         res.status(400).json({ success: false, message: 'Invalid coupon code.' });
+    }
+});
+
+// ✅ Logout Route
+app.get("/auth/logout", (req, res) => {
+    req.session.destroy(err => {
+        if (err) return res.status(500).json({ message: "Logout failed" });
+        res.redirect("/auth/login");
+    });
+});
+
+// ✅ Fetch Users (for Admin or Debugging)
+app.get("/users", (req, res) => {
+    db.query("SELECT * FROM users", (err, results) => {
+        if (err) return res.status(500).send("Database error");
+        res.json(results);
+    });
+});
+app.get("/api/user", (req, res) => {
+    if (req.session.user) {
+        res.json({ loggedIn: true, user: req.session.user });
+    } else {
+        res.status(401).json({ loggedIn: false, message: "User not logged in." });
     }
 });
 

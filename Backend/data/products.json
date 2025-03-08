@@ -13,7 +13,7 @@
     "name": "Official Size Basketball",
     "description": "Regulation size basketball for professional play.",
     "price": 29.99,
-    "stock": 98,
+    "stock": 90,
     "image": "images/basketball.jpg",
     "coupon": "BALL20"
   },
@@ -22,7 +22,7 @@
     "name": "Basketball Sneakers",
     "description": "Comfortable sneakers designed for basketball players.",
     "price": 79.99,
-    "stock": 80,
+    "stock": 78,
     "image": "images/socks.jpg",
     "coupon": "SHOES30"
   },
@@ -47,7 +47,7 @@
     "name": "Headband",
     "description": "Sweat-absorbing headband for basketball players.",
     "price": 9.99,
-    "stock": 200,
+    "stock": 198,
     "image": "images/headband.jpg"
   },
   {
@@ -55,7 +55,7 @@
     "name": "Leggings",
     "description": "Compression leggings for improved performance.",
     "price": 39.99,
-    "stock": 120,
+    "stock": 116,
     "image": "images/legging.jpg"
   },
   {
