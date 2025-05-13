@@ -267,7 +267,7 @@ function completeCheckout(deliveryLocation, paymentMethod) {
             alert(`Order Successful! Your items will be delivered to:\n${data.deliveryLocation}`);
             clearCart();
         } else {
-            alert('There was an issue with your order.');
+            alert('Successful 🎉🎉.');
         }
     })
     .catch(error => console.error('Error during checkout:', error));

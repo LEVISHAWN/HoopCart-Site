@@ -31,7 +31,7 @@
     "name": "Basketball Training Ball",
     "description": "Lightweight training ball for beginners and kids.",
     "price": 3199,
-    "stock": 148,
+    "stock": 133,
     "image": "images/training-ball.jpg"
   },
   {
@@ -39,7 +39,7 @@
     "name": "Basketball Jersey Set",
     "description": "Full set of jerseys for a basketball team.",
     "price": 7999,
-    "stock": 30,
+    "stock": 29,
     "image": "images/jersey.jpg"
   },
   {
@@ -55,7 +55,7 @@
     "name": "Leggings",
     "description": "Compression leggings for improved performance.",
     "price": 6399,
-    "stock": 122,
+    "stock": 114,
     "image": "images/legging.jpg"
   },
   {
@@ -63,7 +63,7 @@
     "name": "Mouthguard",
     "description": "Protective mouthguard for basketball players.",
     "price": 2399,
-    "stock": 150,
+    "stock": 148,
     "image": "images/mouthguard.jpg"
   },
   {
@@ -95,7 +95,7 @@
     "name": "Water Bottle",
     "description": "Insulated water bottle for hydration during games.",
     "price": 2399,
-    "stock": 200,
+    "stock": 198,
     "image": "images/water-bottle.jpg"
   },
   {
@@ -183,7 +183,7 @@
     "name": "Ball Pump",
     "description": "High-quality pump for inflating basketballs.",
     "price": 2079,
-    "stock": 200,
+    "stock": 190,
     "image": "images/ball-pump.jpg"
   },
   {
@@ -191,7 +191,7 @@
     "name": "Wristbands",
     "description": "Moisture-wicking wristbands for sweat control.",
     "price": 1279,
-    "stock": 285,
+    "stock": 268,
     "image": "images/wristbands.jpg"
   },
   {
@@ -223,7 +223,7 @@
     "name": "Player ID Cards",
     "description": "Customizable ID cards for team members.",
     "price": 799,
-    "stock": 500,
+    "stock": 498,
     "image": "images/id-cards.jpg"
   },
   {
@@ -231,7 +231,7 @@
     "name": "Court Marker Chalk",
     "description": "Chalk for marking basketball courts.",
     "price": 959,
-    "stock": 200,
+    "stock": 180,
     "image": "images/chalk.jpg"
   },
   {
@@ -239,7 +239,7 @@
     "name": "Basketball Whistle",
     "description": "Referee whistle for games and practices.",
     "price": 1439,
-    "stock": 150,
+    "stock": 148,
     "image": "images/whistle.jpg"
   }
 ]

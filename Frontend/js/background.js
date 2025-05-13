@@ -78,9 +78,9 @@ const createHexBackground = () => {
                 const opacity = Math.max(0, 1 - distance / maxDistance);
                 
                 if (opacity > 0) {
-                    // Brighter blue color with higher opacity
-                    ctx.strokeStyle = `rgba(30, 144, 255, ${opacity * 0.8})`; // Dodger Blue
-                    ctx.fillStyle = `rgba(30, 144, 255, ${opacity * 0.2})`; // Lighter fill
+                    // Basketball orange color with higher opacity
+                    ctx.strokeStyle = `rgba(255, 140, 0, ${opacity * 0.8})`; // Basketball Orange
+                    ctx.fillStyle = `rgba(255, 140, 0, ${opacity * 0.2})`; // Lighter fill
                     ctx.lineWidth = 2; // Slightly thicker lines
                     
                     drawHexagon(x, y, hexSize);

@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 // ✅ Enable CORS for frontend communication
 app.use(
     cors({
-        origin: "http://localhost:5500", // Adjust frontend URL if needed
+        origin: ["http://localhost:5500", "http://localhost:3000", "http://127.0.0.1:5500"],
         credentials: true,
     })
 );
@@ -28,22 +28,30 @@ app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_SECRET || "fallback_secret_key",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        secure: false, // Set to true if using HTTPS
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
 }));
-
-// Add auth middleware
-app.use(checkAuth);
 
 // ✅ Set EJS as the view engine
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // ✅ Serve Static Frontend Files
-app.use(express.static(path.join(__dirname, "../frontend")));
-app.use(express.static(path.join(__dirname, "public"))); // Ensure this is serving account.html
+app.use(express.static(path.join(__dirname, "../Frontend")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // ✅ Use auth routes
 app.use("/auth", authRoutes);
+app.use("/payment", paymentRoutes);
+
+// Add auth middleware for protected routes
+app.use("/account", checkAuth);
+app.use("/api/user", checkAuth);
+app.use("/api/cart", checkAuth);
 
 // ✅ Serve the account page
 app.get("/account", (req, res) => {
@@ -61,19 +69,6 @@ app.get("/api/auth/status", (req, res) => {
     });
 });
 
-// ✅ Use authentication and payment routes
-app.use("/auth", authRoutes);
-app.use("/payment", paymentRoutes);
-
-// ✅ Serve Static Frontend Files
-app.use(express.static(path.join(__dirname, "../frontend")));
-app.use(express.static(path.join(__dirname, "public"))); // Ensure this is serving account.html
-
-// ✅ Serve the account page
-app.get("/account", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "account.html"));
-});
-
 // ✅ Define product data file path
 const productsFilePath = path.join(__dirname, "data", "products.json");
 
@@ -89,29 +84,6 @@ try {
     products = JSON.parse(rawData);
 } catch (error) {
     console.error("❌ Error loading products:", error);
-}
-
-// ✅ Default products if file is empty or invalid
-if (!Array.isArray(products) || products.length === 0) {
-    products = [
-        {
-            id: 1,
-            name: "Portable Basketball Hoop",
-            description: "High-quality portable basketball hoop for outdoor use.",
-            price: 199.99,
-            stock: 50,
-            image: "images/hoop.jpg",
-        },
-        {
-            id: 2,
-            name: "Official Size Basketball",
-            description: "Regulation size basketball for professional play.",
-            price: 29.99,
-            stock: 100,
-            image: "images/basketball.jpg",
-        },
-    ];
-    fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2));
 }
 
 let cart = [];
@@ -192,14 +164,6 @@ app.post("/api/apply-coupon", (req, res) => {
     else res.status(400).json({ success: false, message: "Invalid coupon code." });
 });
 
-// ✅ Logout Route
-app.get("/auth/logout", (req, res) => {
-    req.session.destroy(err => {
-        if (err) return res.status(500).json({ message: "Logout failed" });
-        res.redirect("/auth/login");
-    });
-});
-
 // ✅ Fetch Users (for Admin or Debugging)
 app.get("/users", (req, res) => {
     db.query("SELECT * FROM users", (err, results) => {
@@ -207,6 +171,7 @@ app.get("/users", (req, res) => {
         res.json(results);
     });
 });
+
 app.get("/api/user", (req, res) => {
     if (req.session.user) {
         res.json({ loggedIn: true, user: req.session.user });
@@ -216,8 +181,16 @@ app.get("/api/user", (req, res) => {
 });
 
 // ✅ Start Server
-const server = app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`)).on("error", (err) => {
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+}).on("error", (err) => {
     if (err.code === "EADDRINUSE") {
-        const newServer = app.listen(0, () => console.log(`🚀 Server running on http://localhost:${newServer.address().port}`));
-    } else console.error("❌ Server failed to start:", err);
+        const newPort = PORT + 1;
+        console.log(`Port ${PORT} is in use, trying port ${newPort}...`);
+        app.listen(newPort, () => {
+            console.log(`🚀 Server running on http://localhost:${newPort}`);
+        });
+    } else {
+        console.error("❌ Server failed to start:", err);
+    }
 });

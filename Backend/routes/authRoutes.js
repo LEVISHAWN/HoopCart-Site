@@ -31,10 +31,13 @@ router.post("/signup", async (req, res) => {
             return res.render("signup", { message: "Email already exists!" });
         }
 
+        // Format phone number to E.164 format
+        const formattedPhone = phone.startsWith('+') ? phone : `+${phone}`;
+
         // Insert new user
         await db.query(
             "INSERT INTO users (full_name, email, phone, password) VALUES (?, ?, ?, ?)",
-            [full_name, email, phone, hashedPassword]
+            [full_name, email, formattedPhone, hashedPassword]
         );
 
         res.redirect("/auth/login");
